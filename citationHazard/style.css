@@ -1,0 +1,11 @@
+:root {
+    --cd-txt: #6300a0;
+    --cd-box: #fff;
+}
+
+.container {
+    background-color: rgb(237, 246, 247);
+}
+
+.form {
+}

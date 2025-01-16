@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="j.js" defer></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .toDoList {
+            background-color: pink;
+            width: 80%;
+            height: 80vh;
+            border: 1px solid black;
+        }
+
+        h1 {
+            font-size: 3rem;
+            text-align: center;
+            padding: 1%;
+            border-bottom: 1px solid black;
+            margin: 0;
+        }
+        div{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        div>*{
+            font-size: 2.5rem;
+        }
+        input{
+            display: block;
+        }
+        #add,#del{
+            border: none;
+            cursor: pointer;
+        }
+        #input_list{
+            height: 64vh;
+            border-bottom: 1px solid black;
+        }
+        #btn>.valid{
+            line-height: 180%;
+            background-color: transparent;
+        }
+        #btn>:nth-of-type(2){
+            width: 90%;
+        }
+        #input_list{
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="toDoList">
+        <h1>To-Do-List</h1>
+        <div id="input_list"></div>
+        <section class="list">
+            <div id="btn">
+                <input class="valid" type="submit" id="add" value="✅">
+                <input id="form" type="text">
+                <input class="valid" type="submit" id="del" value="❌">
+            </div>
+        </section>
+    </section>
+</body>
+
+</html>
