@@ -1,0 +1,327 @@
+@layer base {
+
+    /* Définir 1rem à 10px */
+    html {
+        font-size: 62.5%;
+        /* 62.5% de 16px = 10px */
+    }
+
+    /* 1. Réinitialisation des marges et des espacements */
+    *,
+    *::before,
+    *::after {
+        margin: 0;
+        /* Supprime les marges par défaut */
+        padding: 0;
+        /* Supprime les espacements par défaut */
+        box-sizing: border-box;
+        /* Inclut le padding et la bordure dans les dimensions de l'élément */
+    }
+
+    /* 2. Définition des styles de base */
+    body {
+        font-family: Arial, sans-serif;
+        /* Police par défaut */
+        background-color: #f5f5f5;
+        /* Couleur de fond par défaut */
+        color: #333;
+        /* Couleur du texte par défaut */
+        line-height: 1.5;
+        /* Interligne par défaut pour le texte */
+    }
+
+    /* 3. Réinitialisation des titres */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 0;
+        /* Supprime les marges par défaut des titres */
+    }
+
+    /* 4. Réinitialisation des listes */
+    ul,
+    ol {
+        list-style: none;
+        /* Supprime les puces et les numéros */
+    }
+
+    /* 5. Réinitialisation des liens */
+    a {
+        text-decoration: none;
+        /* Supprime le soulignement par défaut des liens */
+        color: inherit;
+        /* Hérite de la couleur du texte */
+    }
+
+    /* 6. Réinitialisation des images */
+    img {
+        max-width: 100%;
+        /* Rendre les images réactives */
+        height: auto;
+        /* Maintenir les proportions des images */
+    }
+
+    /* 7. Réinitialisation des tableaux */
+    table {
+        border-collapse: collapse;
+        /* Supprime les espaces entre les cellules */
+        width: 100%;
+        /* Rendre les tables réactives */
+    }
+
+    /* 8. Réinitialisation des boutons */
+    button {
+        background: none;
+        /* Supprime les styles par défaut des boutons */
+        border: none;
+        /* Supprime les bordures par défaut des boutons */
+        cursor: pointer;
+        /* Change le curseur au survol */
+    }
+}
+
+body {
+    overflow: hidden;
+}
+
+main {
+    background-color: green;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+}
+.firstWave{
+    width: 100%;
+    border: 1px solid green;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.road {
+    background-color: rgb(171, 111, 42);
+    height: 100vh;
+    width: 30%;
+    border: 5px solid rgb(255, 255, 255);
+    border-top: none;
+    border-bottom: none;
+    display: flex;
+    position: relative;
+}
+.line__disipear{
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    transform: translateY(-80px);
+    height: 7vh;
+    width: 3%;
+    animation: disipear 3s forwards linear;
+}
+@keyframes disipear {
+    100%{
+        transform: translateY(100vh);
+    }
+}
+
+.line{
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    transform: translateY(-80px);
+    height: 7vh;
+    width: 3%;
+    animation: road 3s linear infinite;
+}
+@keyframes road {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(100vh);
+    }
+}
+.line:nth-of-type(1){
+    animation-delay: 0.3s;
+}
+.line:nth-of-type(2){
+    animation-delay: 0.6s;
+}
+.line:nth-of-type(3){
+    animation-delay: 0.9s;
+}
+.line:nth-of-type(4){
+    animation-delay: 1.2s;
+}
+.line:nth-of-type(5){
+    animation-delay: 1.5s;
+}
+.line:nth-of-type(6){
+    animation-delay: 1.8s;
+}
+.line:nth-of-type(7){
+    animation-delay: 2.1s;
+}
+.line:nth-of-type(8){
+    animation-delay: 2.4s;
+}
+.line:nth-of-type(9){
+    animation-delay: 2.7s;
+}
+.line:nth-of-type(10){
+    animation-delay: 3s;
+}
+
+.line__disipear:nth-of-type(11){
+    top: 10%;
+}
+.line__disipear:nth-of-type(12){
+    top: 20%;
+}
+.line__disipear:nth-of-type(13){
+    top: 30%;
+}
+.line__disipear:nth-of-type(14){
+    top: 40%;
+}
+.line__disipear:nth-of-type(15){
+    top: 50%;
+}
+.line__disipear:nth-of-type(16){
+    top: 60%;
+}
+.line__disipear:nth-of-type(17){
+    top: 70%;
+}
+.line__disipear:nth-of-type(18){
+    top: 80%;
+}
+.line__disipear:nth-of-type(19){
+    top: 90%;
+}
+.line__disipear:nth-of-type(20){
+    top: 100%;
+}
+
+/* ↑ ROAD ↑ */
+
+#car{
+    position: absolute;
+    bottom: 5%;
+    border-radius: 30%;
+    right: 38.3%;
+    width: 8%;
+    height: 30%;
+    background-color: red;
+}
+
+.wheel{
+    position: absolute;
+    z-index: 0;
+    width: 5%;
+    height: 20%;
+    background-color: black;
+    border-radius:50%;
+
+}
+.wheel:nth-of-type(1){
+    top: 20%;
+    left: -2%;
+}
+.wheel:nth-of-type(2){
+    top: 20%;
+    right: -2%;
+}
+.wheel:nth-of-type(3){
+    left: -2%;
+    bottom: 20%;
+}
+.wheel:nth-of-type(4){
+    right: -2%;
+    bottom: 20%;
+}
+
+/* ↑ VOITURE ↑ */
+
+
+@keyframes rotate-car-left {
+    from{
+        transform:translateX(0%)rotate(-20deg);
+    }
+    100%{
+        transform:translateX(-200%)rotate(0deg);
+    }
+}
+
+@keyframes rotate-car-right {
+    from{
+        transform:translateX(-200%)rotate(20deg);
+    }
+    100%{
+        transform:translateX(0%)rotate(0deg);
+    }
+}
+
+@keyframes rotate-wheel-left {
+    from{
+        transform:rotate(-40deg)scale(1.5);
+    }
+    100%{
+        transform:rotate(0deg)scale(1);
+    }
+}
+@keyframes rotate-wheel-right {
+    from{
+        transform:rotate(50deg)scale(1.5);
+    }
+    100%{
+        transform:rotate(0deg)scale(1);
+    }
+}
+
+/* ↑ ANIM VOITURE JS ↑ */
+
+#rock{
+    position: absolute;
+    top: -15%;
+    left: 53.5%;
+    width: 8vw;
+    height: 12vh;
+    border-radius: 50%;
+    background-color: black;
+}
+#rock2{
+    position: absolute;
+    top: -15%;
+    left: 38.5%;
+    width: 8vw;
+    height: 12vh;
+    border-radius: 50%;
+    background-color: black;
+}
+
+@keyframes rockMove {
+    100%{
+        transform: translateY(120vh);
+    }
+}
+@keyframes rockMove2 {
+    100%{
+        transform: translateY(120vh);
+    }
+}
+
+#gameOver{
+    position: absolute;
+    top: 20%;
+    color: black;
+    left: 18%;
+    font-size: 20rem;
+    opacity: 0;
+}
