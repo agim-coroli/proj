@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: rgb(168, 168, 168);
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+            font-family: sans-serif;
+        }
+
+        section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .section {
+            width: 70%;
+            height: 70vh;
+            background-color: #656565;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .box {
+            height: 75%;
+            width: 70%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: auto;
+            color: white;
+            font-size: 5rem;
+        }
+
+        .nameIn {
+            height: 25%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5%;
+            padding: 2%;
+        }
+
+        h1 {
+            font-size: 2rem;
+            text-decoration: underline;
+            color: rgb(255, 255, 255);
+            margin: 0;
+        }
+
+        input {
+            width: 30%;
+            height: 20%;
+            font-size: 2rem;
+            text-align: center;
+            padding: .5%;
+        }
+
+        .addNames {
+            display: flex;
+            justify-content: center;
+            color: rgb(0, 255, 30);
+            font-family: sans-serif;
+            gap: 2%;
+            flex-wrap: wrap;
+            border: 1px solid red;
+            width: 100%;
+        }
+
+        .addNames>p {
+            font-size: 2rem;
+            background-color: red;
+            color: white;
+            padding: 1%;
+        }
+
+        button {
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div class="section">
+            <div class="box">
+                <div class="addNames">
+                </div>
+            </div>
+            <div class="nameIn">
+                <h1>Ajouter un nom a la liste</h1>
+                <input type="text">
+                <button>Valider</button>
+                <button>Supprimer</button>
+                <button>Mélanger</button>
+            </div>
+        </div>
+    </section>
+
+
+
+    <script>
+        let addNames = document.querySelector('.addNames')
+        let champDeSaisie = document.querySelector('input');
+        let valider = document.querySelectorAll('button')[0];
+        let supprimer = document.querySelectorAll('button')[1];
+        let melanger = document.querySelectorAll('button')[2];
+        let paragraphe;
+        let arrayName = [];
+
+        valider.addEventListener('click', () => {
+            if (champDeSaisie.value !== "") {
+                if (arrayName.length >= 10) {
+                    alert('trop de nom')
+                    cleanInput()
+                } else if (arrayName.includes(champDeSaisie.value)) {
+                    alert(`tu n'as pas le droit de mettre plusieur fois ${champDeSaisie.value}`)
+                    cleanInput()
+                } else {
+                    createP()
+                    addInArray(champDeSaisie.value)
+                    cleanInput()
+                }
+
+            } else {
+                alert('vous devez entre une valeur')
+            }
+        })
+        console.log(arrayName);
+
+        supprimer.addEventListener('click', () => {
+            for (let i = 0; i < addNames.children.length; i++) {
+                let enfant = addNames.children[i];
+                if (enfant.textContent === champDeSaisie.value) {
+                    console.log('ok');
+                    addNames.removeChild(enfant);
+                    cleanInput()
+                    break;
+                }
+            }
+        });
+
+
+
+        melanger.addEventListener('click', () => {
+            let randomNumber = Math.floor(Math.random() * arrayName.length)
+            let randomName = arrayName[randomNumber]
+            arrayName.splice(randomName, 1)
+            for (let i = 0; i < addNames.children.length; i++) {
+                let enfant = addNames.children[i];
+                if (enfant.textContent === randomName) {
+                    addNames.removeChild(enfant);
+                    melanger.disabled="true"
+                    valider.disabled="true"
+                    supprimer.disabled="true"
+                    champDeSaisie.disabled="true"
+                    addNames.textContent = enfant.textContent
+                }
+            }
+            console.log(randomName);
+        })
+
+        function createP() {
+            paragraphe = document.createElement('p')
+            paragraphe.textContent = champDeSaisie.value
+            addNames.appendChild(paragraphe)
+        }
+
+        function addInArray(e) {
+            arrayName.push(e)
+        }
+
+        function cleanInput() {
+            champDeSaisie.value = ""
+        }
+    </script>
+</body>
+
+</html>
