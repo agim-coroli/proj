@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .face,
+      .pile {
+        transform-style: preserve-3d;
+        font-size: 8rem;
+        border: 30px solid black;
+        background-color: black;
+        border-radius: 50%;
+        line-height: 150px;
+        position: absolute;
+      }
+      .pile {
+        backface-visibility: hidden;
+      }
+      .declanche {
+        transform-style: preserve-3d;
+        font-size: 8rem;
+        border: 30px solid black;
+        background-color: black;
+        border-radius: 50%;
+        line-height: 150px;
+        position: absolute;
+        animation: flip 0.15s infinite linear;
+
+
+      }
+      @keyframes flip {
+        0% {
+          transform: rotateX(40deg) rotateY(30deg);
+        }
+        100% {
+          transform: rotateX(40deg) rotateY(30deg) rotateX(360deg);
+        }
+      }
+
+      .start,
+      .stop {
+        width: 10%;
+        height: 10%;
+        background-color: black;
+        position: absolute;
+        color: white;
+        text-align: center;
+        line-height: 100px;
+        font-size: 2.5rem;
+        cursor: pointer;
+      }
+      .start {
+        left: 30%;
+      }
+      .stop {
+        right: 30%;
+      }
+      .rotate{
+        transform: rotateY(180deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="face">😉</div>
+    <div class="pile back">1️⃣</div>
+    <div class="start">Start</div>
+    <div class="stop">Stop</div>
+
+
+
+
+
+    <script>
+      let start = document.querySelectorAll(".start");
+      let stop = document.querySelectorAll(".stop");
+      let face = document.querySelectorAll(".face");
+      let pile = document.querySelectorAll(".pile");
+      let faceAvant = face[0];
+      let faceArriere = pile[0];
+      let btn1 = start[0];
+      let btn2 = stop[0];
+      btn1.addEventListener("click", () => {
+        faceAvant.classList.add("declanche");
+        faceArriere.classList.add("declanche");
+      });
+      btn2.addEventListener("click", () => {
+        faceAvant.classList.remove("declanche");
+        faceArriere.classList.remove("declanche");
+        let random = Math.floor(Math.random()*2)
+        console.log(random);
+        
+        if (random === 1) {
+            faceAvant.classList.add("rotate");
+            faceArriere.classList.add("rotate");
+        } else {
+            faceAvant.classList.remove("rotate");
+            faceArriere.classList.remove("rotate");
+        }
+        
+      });
+    </script>
+  </body>
+</html>
