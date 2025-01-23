@@ -1,14 +1,33 @@
+let buttons = document.querySelectorAll('button');
 
-function appendToDisplay(value) {
-    document.getElementById('display').value += value;
-    la valeur de display est egal a sa valeur cliquer plus une valeur cliquer
-}
+let display = document.querySelector('input');
 
-function calculateResult() {
-    var display = document.getElementById('display');
-    display.value = eval(display.value);
-}
+let num1 = "";
+let operator = "";
+let num2 = "";
 
-function clearDisplay() {
-    document.getElementById('display').value = '';
-}
+
+buttons.forEach(button => {
+    button.addEventListener('click', () => {
+        let btnTxt = button.innerText;
+        let displaytxt = display.value;
+        if (btnTxt === 'C' && btnTxt !== "") {
+            displaytxt = '';
+            num1 = '';
+            operator = '';
+            num2 = '';
+        } else if (btnTxt === '=') {
+            displaytxt = eval(num1 + operator + num2)
+        } else if (['+', '-', '*', '/'].includes(btnTxt)) {
+            if (['+', '-', '*', '/'].includes(displaytxt.slice(-1))) {
+                display.value = display.value.slice(0, -1) + btnTxt; // Remplacer l'opérateur existant
+                // A MODIFIER
+            } else {
+                operator = btnTxt;
+                display.value += operator;
+            }
+        } else {
+            display.value += btnTxt;
+        }
+    });
+});
